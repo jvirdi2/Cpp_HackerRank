@@ -1,11 +1,15 @@
 #include<bits/stdc++.h>
-
-using namespace std;
 #include <algorithm>
-
+using namespace std;
 
 // Define the structs Workshops and Available_Workshops.
 // Implement the functions initialize and CalculateMaxWorkshops
+// Calculates maximum workshops a person can attend without overlapping time
+// If a workshop is from 1-3 and the second one is from 2-4, then he cannot attend the second one
+// Input is given as
+// 6 (number of workshops)
+// 1 3 0 5 5 8 (starting time of workshops)
+// 1 1 6 2 4 1 (duration of workshops)
 
 struct Workshop {
   int wkshop_st_time;
