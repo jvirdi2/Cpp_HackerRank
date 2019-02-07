@@ -42,12 +42,12 @@ int main(){
 	vector<string> final;
 	vector<string> query;
 	
-	for (int i=0;i<N;i++){
+	for (int i=0;i<N;i++){ // Takes all the entries as input in final
 		getline(cin,s);
 		final.push_back(s);
 	}
 	
-	for (int i=0;i<Q;i++){
+	for (int i=0;i<Q;i++){ // Entry input for queries
 		getline(cin,q);
 		query.push_back(q);
 	}
@@ -69,7 +69,7 @@ int main(){
 	
 	string int1;
 	
-	for (int i=0;i<Q;i++)
+	for (int i=0;i<Q;i++) // Go through each query
 	{
 		curr_que=query[i];
 		vector<string> store;
@@ -83,42 +83,44 @@ int main(){
 		attr_end=1;
 		
 		
-		if (curr_que.find("~")!=string::npos)
+		if (curr_que.find("~")!=string::npos) // Check if ~ present. 
 		{
 			do {
 				int1=curr_que.substr(3+5*(k),1);
 				store.push_back(int1);
 				k=k+1;
-			} while (curr_que[4+5*(k-1)]!='~');
+			} while (curr_que[4+5*(k-1)]!='~'); //If present, it is valid and store all the indices of that query
 
 		
 			len_store=store.size();
 			
 			while (p<N)
-			{
+			{//Parse through the entries N. Check if all the indices of query i stored above are present in N entries
 
 				if (find(store.begin(),store.end(),final[p].substr(4,1))!=store.end())
 				{
 					counter=counter+1;
-					if (counter==len_store)
+					if (counter==len_store) // Valid
 					{
 						attr=curr_que.substr(curr_que.find("~")+1);
-						
+						// Find attribute name in query
 						
 						if (final[p].find(attr)!=string::npos) 
+						// Check if attribute name is present in entry p of N
 						{
 							indexspace=final[p].find(" ");
 							index=final[p].find(attr,indexspace);
-							
+							// We start after the first space, that is after tag1
 							len_attr=attr.length();
-						
+							
 							while (true)
 							{
 							
 								c_one=final[p][index+len_attr-1+3+attr_end];
 							
 							
-								if (c_one=="\"")
+								if (c_one=="\"") 
+								// starting point of attribute value " and stopping at "
 								{
 									counter_final=counter_final+1;
 								}
@@ -129,7 +131,7 @@ int main(){
 									{
 										cout << final_print << endl;
 									}
-									else
+									else // if ended suddenly like ""
 									{
 										cout << "Not Found!" << endl;
 									}
