@@ -23,6 +23,8 @@ using namespace std;
 
 //Overload operator << as specified
 //ostream& operator<<(ostream& out, Box& B)
+
+/* Mainly about overloading of operators and constructors. 2 box elements are compared by comparing length, breadth and height */
 class Box{
     private:
         int l;
