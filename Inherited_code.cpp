@@ -6,6 +6,8 @@ using namespace std;
 
 
 /* Define the exception here */
+/* Creating an exception to handle password which have size smaller than 5 characters*/
+
 class BadLengthException: public exception
 {
     public:
